@@ -44,7 +44,7 @@ func (i *ImagePacket) Execute(ctx context.Context) error {
 
 	stdout, err := cmd.Output()
 	if err != nil {
-		fmt.Println(err.Error())
+		return err
 	}
 
 	scanner := bufio.NewScanner(stderr)
