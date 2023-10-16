@@ -47,6 +47,9 @@ func main() {
 		},
 	}
 
+	// init cron
+	go initImageProcessorCron(ctx, cron)
+
 	imageRegisteryService := &imageService.ImageRegisteryService{
 		DatabaseService: dbClient,
 	}
@@ -59,9 +62,6 @@ func main() {
 	}
 	// init server
 	initFetchHttpServer(ctx, httpService)
-
-	// init cron
-	go initImageProcessorCron(ctx, cron)
 }
 
 // initDb Create entities in PGDB

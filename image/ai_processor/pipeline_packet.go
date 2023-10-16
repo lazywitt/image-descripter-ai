@@ -36,10 +36,10 @@ func (i *ImagePacket) Execute(ctx context.Context) error {
 		return err
 	}
 	imagesDirectory := filepath.Join(currDirectory, "images-blob")
-	scriptDirectory := filepath.Join(currDirectory, "image/pipeline") + "/model.sh"
+	scriptPath := filepath.Join(currDirectory, "image/ai_processor") + "/model.sh"
 
 	fmt.Println("image loc:  ", imagesDirectory+"/"+i.Image.Path)
-	cmd := exec.Command("bash", scriptDirectory, imagesDirectory+"/"+i.Image.Path)
+	cmd := exec.Command("bash", scriptPath, imagesDirectory+"/"+i.Image.Path)
 	stderr, _ := cmd.StderrPipe()
 
 	stdout, err := cmd.Output()
